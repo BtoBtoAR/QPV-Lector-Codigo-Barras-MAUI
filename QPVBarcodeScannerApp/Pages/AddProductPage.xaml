@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QPVBarcodeScannerApp.AddProductPage"
+             Title="Agregar Nuevo Producto">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="15">
+
+            <Label 
+                Text="Nuevo Producto"
+                Style="{StaticResource Headline}"
+                HorizontalOptions="Center"
+                Margin="0,0,0,10" />
+
+            <!-- Photo Section -->
+            <Frame
+                BorderColor="Gray"
+                CornerRadius="10"
+                Padding="10"
+                HeightRequest="200"
+                HorizontalOptions="Fill">
+                <Grid>
+                    <Image
+                        x:Name="ProductPhoto"
+                        Aspect="AspectFit"
+                        IsVisible="False" />
+                    <Label
+                        Text="Sin foto"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="Gray"
+                        FontSize="16" />
+                </Grid>
+            </Frame>
+
+            <Button
+                Text="Tomar Fotografía"
+                Clicked="OnTakePhotoClicked"
+                BackgroundColor="#512BD4"
+                TextColor="White" />
+
+            <Label
+                x:Name="PhotoStatusLabel"
+                Text=""
+                HorizontalOptions="Center"
+                FontSize="14" />
+
+            <!-- Product Data Form -->
+            <Frame
+                BorderColor="LightGray"
+                CornerRadius="10"
+                Padding="15"
+                Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Código de Barras:" FontAttributes="Bold" />
+                    <Entry x:Name="BarcodeEntry"
+                           IsReadOnly="True"
+                           BackgroundColor="LightGray" />
+
+                    <Label Text="Descripción:" FontAttributes="Bold" Margin="0,10,0,0" />
+                    <Entry x:Name="DescriptionEntry"
+                           Placeholder="Ingrese descripción del producto" />
+
+                    <Label Text="Unidad de Medida:" FontAttributes="Bold" Margin="0,10,0,0" />
+                    <Entry x:Name="UnitEntry"
+                           Placeholder="Ej: Pieza, Kg, Litro" />
+
+                    <Label Text="Costo:" FontAttributes="Bold" Margin="0,10,0,0" />
+                    <Entry x:Name="CostEntry"
+                           Keyboard="Numeric"
+                           Placeholder="0.00" />
+
+                    <Label Text="Precio:" FontAttributes="Bold" Margin="0,10,0,0" />
+                    <Entry x:Name="PriceEntry"
+                           Keyboard="Numeric"
+                           Placeholder="0.00" />
+
+                    <Label Text="Cantidad Inicial:" FontAttributes="Bold" Margin="0,10,0,0" />
+                    <Entry x:Name="QuantityEntry"
+                           Keyboard="Numeric"
+                           Placeholder="0" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Button
+                Text="Guardar Producto"
+                Clicked="OnSaveProductClicked"
+                BackgroundColor="#28A745"
+                TextColor="White"
+                Margin="0,20,0,0" />
+
+            <Button
+                Text="Cancelar"
+                Clicked="OnCancelClicked"
+                BackgroundColor="Gray"
+                TextColor="White" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
