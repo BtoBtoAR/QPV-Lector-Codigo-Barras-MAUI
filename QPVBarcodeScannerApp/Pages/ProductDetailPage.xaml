@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QPVBarcodeScannerApp.ProductDetailPage"
+             Title="Detalle del Producto">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="15">
+
+            <!-- Product Photo -->
+            <Frame
+                BorderColor="Gray"
+                CornerRadius="10"
+                Padding="0"
+                HeightRequest="250"
+                HorizontalOptions="Fill">
+                <Image
+                    x:Name="ProductPhoto"
+                    Aspect="AspectFit"
+                    HeightRequest="250" />
+            </Frame>
+
+            <!-- Product Information -->
+            <Frame
+                BorderColor="LightGray"
+                CornerRadius="10"
+                Padding="15"
+                Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="10">
+                    
+                    <Label Text="Código de Barras:" 
+                           FontAttributes="Bold"
+                           FontSize="16" />
+                    <Label x:Name="BarcodeLabel"
+                           FontSize="16"
+                           TextColor="Gray" />
+
+                    <Label Text="Descripción:" 
+                           FontAttributes="Bold"
+                           FontSize="16"
+                           Margin="0,10,0,0" />
+                    <Label x:Name="DescriptionLabel"
+                           FontSize="16"
+                           TextColor="Gray" />
+
+                    <Label Text="Unidad de Medida:" 
+                           FontAttributes="Bold"
+                           FontSize="16"
+                           Margin="0,10,0,0" />
+                    <Label x:Name="UnitLabel"
+                           FontSize="16"
+                           TextColor="Gray" />
+
+                    <Grid ColumnDefinitions="*,*" 
+                          ColumnSpacing="20"
+                          Margin="0,10,0,0">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="Costo:" 
+                                   FontAttributes="Bold"
+                                   FontSize="16" />
+                            <Label x:Name="CostLabel"
+                                   FontSize="16"
+                                   TextColor="Gray" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Precio:" 
+                                   FontAttributes="Bold"
+                                   FontSize="16" />
+                            <Label x:Name="PriceLabel"
+                                   FontSize="16"
+                                   TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Quantity Update Section -->
+            <Frame
+                BorderColor="LightBlue"
+                CornerRadius="10"
+                Padding="15"
+                Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="10">
+                    
+                    <Label Text="Actualizar Cantidad de Existencia:" 
+                           FontAttributes="Bold"
+                           FontSize="16" />
+                    
+                    <Entry x:Name="QuantityEntry"
+                           Keyboard="Numeric"
+                           Placeholder="Ingrese cantidad"
+                           FontSize="16" />
+
+                    <Button
+                        Text="Actualizar Cantidad"
+                        Clicked="OnUpdateQuantityClicked"
+                        BackgroundColor="#512BD4"
+                        TextColor="White" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Back Button -->
+            <Button
+                Text="Volver al Inicio"
+                Clicked="OnBackClicked"
+                Margin="0,20,0,0"
+                BackgroundColor="Gray"
+                TextColor="White" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
