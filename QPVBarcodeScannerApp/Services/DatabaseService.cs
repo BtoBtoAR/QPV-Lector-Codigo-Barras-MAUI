@@ -24,13 +24,17 @@ public class DatabaseService
     public async Task<List<Product>> GetProductsAsync()
     {
         await InitAsync();
-        return await _database!.Table<Product>().ToListAsync();
+        if (_database == null)
+            throw new InvalidOperationException("Database not initialized");
+        return await _database.Table<Product>().ToListAsync();
     }
 
     public async Task<Product?> GetProductByBarcodeAsync(string barcode)
     {
         await InitAsync();
-        return await _database!.Table<Product>()
+        if (_database == null)
+            throw new InvalidOperationException("Database not initialized");
+        return await _database.Table<Product>()
             .Where(p => p.Barcode == barcode)
             .FirstOrDefaultAsync();
     }
@@ -38,28 +42,34 @@ public class DatabaseService
     public async Task<Product?> GetProductAsync(int id)
     {
         await InitAsync();
-        return await _database!.FindAsync<Product>(id);
+        if (_database == null)
+            throw new InvalidOperationException("Database not initialized");
+        return await _database.FindAsync<Product>(id);
     }
 
     public async Task<int> SaveProductAsync(Product product)
     {
         await InitAsync();
+        if (_database == null)
+            throw new InvalidOperationException("Database not initialized");
         product.UpdatedAt = DateTime.Now;
         
         if (product.Id != 0)
         {
-            return await _database!.UpdateAsync(product);
+            return await _database.UpdateAsync(product);
         }
         else
         {
             product.CreatedAt = DateTime.Now;
-            return await _database!.InsertAsync(product);
+            return await _database.InsertAsync(product);
         }
     }
 
     public async Task<int> DeleteProductAsync(Product product)
     {
         await InitAsync();
-        return await _database!.DeleteAsync(product);
+        if (_database == null)
+            throw new InvalidOperationException("Database not initialized");
+        return await _database.DeleteAsync(product);
     }
 }

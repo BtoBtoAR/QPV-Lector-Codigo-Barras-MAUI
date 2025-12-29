@@ -21,6 +21,7 @@ public static class MauiProgram
 
         // Register services
         builder.Services.AddSingleton<DatabaseService>();
+        builder.Services.AddSingleton<App>();
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<ScannerPage>();
         builder.Services.AddTransient<ProductDetailPage>();
